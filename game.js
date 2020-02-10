@@ -65,7 +65,7 @@ var section63 = [
   [3,3,1,0,1,4,4]
 ];
 
-var sectionCol5 = randomNumber(1,6), sectionCol6=3;
+var sectionCol5 = randomNumber(1,6), sectionCol6=4;
 const colors = ["blue","maroon","green","red","orange","yellow"];
 const cvs = document.getElementById("window");
 const ctx = cvs.getContext("2d");
