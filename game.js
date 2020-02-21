@@ -439,9 +439,18 @@ var section91=[
   [2,0,4,1,5,0,4],
   [2,2,2,4,4,4,4]
 ];
+var section100=[
+  [7,7,7,7,7,7,7],
+  [7,8,8,9,8,8,7],
+  [7,8,8,9,8,8,7],
+  [7,9,9,9,9,9,7],
+  [7,8,8,9,8,8,7],
+  [7,8,8,9,8,8,7],
+  [7,7,7,7,7,7,7],
+]
 var solution = 0;
-var sectionCol1 = randomNumber(1,6);sectionCol2 = randomNumber(1,6), sectionCol3 = randomNumber(1,6), sectionCol4 = randomNumber(1,6),sectionCol5 = randomNumber(1,6), sectionCol6=randomNumber(1,6), sectionCol7=randomNumber(1,6), sectionCol8=randomNumber(1,6), sectionCol9=randomNumber(1,6);
-const colors = ["blue","maroon","green","red","orange","yellow","purple"];
+var sectionCol1 = randomNumber(1,6);sectionCol2 = randomNumber(1,6), sectionCol3 = randomNumber(1,6), sectionCol4 = randomNumber(1,6),sectionCol5 = randomNumber(1,6), sectionCol6=randomNumber(1,6), sectionCol7=randomNumber(1,6), sectionCol8=randomNumber(1,6), sectionCol9=randomNumber(1,6),sectionCol10=0;
+const colors = ["blue","maroon","green","red","orange","yellow","purple","gold","goldenrod","DarkViolet"];
 const cvs = document.getElementById("window");
 const ctx = cvs.getContext("2d");
 const width = 7;
@@ -483,12 +492,12 @@ function Draw(){
 }
 Draw();
 function eventHandler(){
-  if(event.key == "ArrowRight"){if(playerX<=width-2 && ((eval(currentMap)[playerY][playerX+1]< 2)||(eval(currentMap)[playerY][playerX+1]==6))){
+  if(event.key == "ArrowRight"){if(playerX<=width-2 && ((eval(currentMap)[playerY][playerX+1]< 2)||(eval(currentMap)[playerY][playerX+1]==6)||(eval(currentMap)[playerY][playerX+1]>=8))){
     playerX++; console.log(playerX);Draw();}else if(playerX==width-1){sectionNum=sectionNum+1;console.log(sectionNum);playerX=0;defineMap();}}
-  if(event.key == "ArrowLeft"){if(playerX>0 && ((eval(currentMap)[playerY][playerX-1]< 2)||(eval(currentMap)[playerY][playerX-1]==6))){playerX--; console.log(playerX);Draw();}else if(playerX==0){sectionNum=sectionNum-1;console.log(sectionNum);playerX=width-1;defineMap();}}
-  if(event.key == "ArrowUp"){if(playerY>0 && ((eval(currentMap)[playerY-1][playerX]< 2)||(eval(currentMap)[playerY-1][playerX]==6))){playerY--; console.log(playerY);Draw();}else if(playerY==0){sectionNum=sectionNum-3;console.log(sectionNum);playerY=height-1;defineMap();}}
-  if(event.key == "ArrowDown"){if(playerY<=height-2 &&((eval(currentMap)[playerY+1][playerX]< 2)||(eval(currentMap)[playerY+1][playerX]==6))){playerY++; console.log(playerY);Draw();}else if(playerY==height-1){sectionNum=sectionNum+3;console.log(sectionNum);playerY=0;defineMap();}}
-  if(event.key == " "){if((eval(currentMap)[playerX][playerY] == 6)&&(sectionNum == correctnum)){console.log("won")}else{console.log("failed")}}
+  if(event.key == "ArrowLeft"){if(playerX>0 && ((eval(currentMap)[playerY][playerX-1]< 2)||(eval(currentMap)[playerY][playerX-1]==6)||(eval(currentMap)[playerY][playerX-1]>=8))){playerX--; console.log(playerX);Draw();}else if(playerX==0){sectionNum=sectionNum-1;console.log(sectionNum);playerX=width-1;defineMap();}}
+  if(event.key == "ArrowUp"){if(playerY>0 && ((eval(currentMap)[playerY-1][playerX]< 2)||(eval(currentMap)[playerY-1][playerX]==6)||(eval(currentMap)[playerY-1][playerX]>=8))){playerY--; console.log(playerY);Draw();}else if(playerY==0){sectionNum=sectionNum-3;console.log(sectionNum);playerY=height-1;defineMap();}}
+  if(event.key == "ArrowDown"){if(playerY<=height-2 &&((eval(currentMap)[playerY+1][playerX]< 2)||(eval(currentMap)[playerY+1][playerX]==6)||(eval(currentMap)[playerY+1][playerX]>=8))){playerY++; console.log(playerY);Draw();}else if(playerY==height-1){sectionNum=sectionNum+3;console.log(sectionNum);playerY=0;defineMap();}}
+  if(event.key == " "){if((eval(currentMap)[playerX][playerY] == 6)&&(sectionNum == correctnum)){console.log("won");sectionNum=10; defineMap();}else if((eval(currentMap)[playerX][playerY] == 6)&&(sectionNum != correctnum)){console.log("failed")}}
 }
 function randomNumber(min,max){
   return Math.floor(Math.random()*(max-min+1)+min);
